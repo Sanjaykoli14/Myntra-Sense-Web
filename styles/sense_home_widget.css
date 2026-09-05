@@ -1,0 +1,478 @@
+/* ==========================================================================
+   Myntra Sense — Home Screen Styles (Screen 1)
+   Matching the exact layout from user reference design
+   ========================================================================== */
+
+.home-page-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* ==========================================================================
+   1. Showcase Brand Carousel (Top - Showcase Only)
+   ========================================================================== */
+.showcase-carousel-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.showcase-carousel-track {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 0.5rem;
+}
+
+.showcase-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.showcase-card {
+  flex: 0 0 190px;
+  height: 250px;
+  background: #f5f5f6;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-card);
+  user-select: none;
+}
+
+.showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showcase-overlay-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+  padding: 1.25rem 0.75rem 0.65rem 0.75rem;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.showcase-discount {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #ffeb3b;
+  text-transform: uppercase;
+}
+
+.showcase-subtitle {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin-bottom: 0.25rem;
+}
+
+.showcase-brand-logos {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   2. Myntra Sense Hero Banner Section
+   ========================================================================== */
+.sense-hero-banner-container {
+  background: linear-gradient(135deg, #fff5f7 0%, #fff8e1 50%, #fdf2f8 100%);
+  border: 1px solid #ffd6e0;
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(255, 63, 108, 0.08);
+}
+
+.sense-hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Left Hero Column */
+.sense-hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sense-hero-header-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sense-hero-logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.badge-ai-pill {
+  background: linear-gradient(135deg, #ff3f6c 0%, #ff8a00 100%);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.sense-hero-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #1a1a24;
+  line-height: 1.2;
+}
+
+.sense-hero-desc {
+  font-size: 0.95rem;
+  color: #535766;
+  line-height: 1.45;
+}
+
+.sense-value-pills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.sense-value-pill {
+  background: #ffffff;
+  border: 1px solid #ffccd6;
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #282c3f;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 2px 6px rgba(255, 63, 108, 0.05);
+}
+
+.sense-hero-footer-note {
+  font-size: 0.78rem;
+  color: #03a685;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Center Hero Illustration */
+.sense-hero-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.sense-3d-visual {
+  position: relative;
+  width: 220px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pedestal-circle {
+  position: absolute;
+  bottom: 10px;
+  width: 180px;
+  height: 60px;
+  background: radial-gradient(ellipse at center, rgba(255, 63, 108, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.bag-illustration {
+  width: 140px;
+  height: auto;
+  z-index: 2;
+  filter: drop-shadow(0 12px 24px rgba(255, 63, 108, 0.2));
+  animation: floatSubtle 3s ease-in-out infinite;
+}
+
+.floating-chip {
+  position: absolute;
+  background: #ffffff;
+  border: 1px solid #ffd6e0;
+  border-radius: var(--radius-full);
+  padding: 0.3rem 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--myntra-pink);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 3;
+}
+
+.floating-chip.top-left {
+  top: 20px;
+  left: 0;
+  animation: floatSubtle 3.5s ease-in-out infinite 0.5s;
+}
+
+.floating-chip.bottom-right {
+  bottom: 30px;
+  right: -10px;
+  animation: floatSubtle 4s ease-in-out infinite 1s;
+}
+
+/* Right Hero Callout Card */
+.sense-hero-right-card {
+  background: #ffffff;
+  border: 1px solid #ffccd6;
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 8px 24px rgba(255, 63, 108, 0.08);
+  text-align: center;
+}
+
+.right-card-heading {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1a1a24;
+}
+
+.right-card-text {
+  font-size: 0.82rem;
+  color: #535766;
+}
+
+.btn-tap-to-view {
+  background: linear-gradient(135deg, #ff3f6c 0%, #ff6b8b 100%);
+  color: #ffffff;
+  border: none;
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  box-shadow: 0 4px 14px var(--myntra-pink-glow);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn-tap-to-view:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px var(--myntra-pink-glow);
+}
+
+.right-card-footer-label {
+  font-size: 0.72rem;
+  color: #94969f;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   3. Curated Wishlist Picks Section (Carousel)
+   ========================================================================== */
+.curated-picks-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #282c3f;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.curated-carousel-track {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0.5rem 0.25rem 1rem 0.25rem;
+}
+
+.curated-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Product Card */
+.ecom-product-card {
+  flex: 0 0 240px;
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+}
+
+.ecom-product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: #ffd6e0;
+}
+
+.card-img-box {
+  width: 100%;
+  height: 280px;
+  background: #f5f5f6;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.ecom-product-card:hover .card-img {
+  transform: scale(1.04);
+}
+
+.card-confidence-chip {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  border: 1px solid #e2e4e8;
+  border-radius: var(--radius-full);
+  padding: 0.2rem 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--confidence-high);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card-source-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(40, 44, 63, 0.85);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-xs);
+}
+
+.card-source-tag.wishlist {
+  background: var(--myntra-pink);
+}
+
+.card-info-box {
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.card-brand-name {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.card-product-title {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-price-container {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.card-price-current {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.card-price-original {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.card-discount-tag {
+  font-size: 0.75rem;
+  color: var(--text-discount);
+  font-weight: 700;
+}
+
+.card-fit-note {
+  font-size: 0.72rem;
+  color: var(--confidence-high);
+  font-weight: 600;
+  background: var(--confidence-high-bg);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-xs);
+  display: inline-block;
+  margin-top: 0.25rem;
+}
+
+/* ==========================================================================
+   4. Clickable Trending Fashion Products Grid
+   ========================================================================== */
+.trending-products-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.products-grid-4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}

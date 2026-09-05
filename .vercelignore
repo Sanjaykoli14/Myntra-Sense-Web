@@ -1,15 +1,4 @@
-# Vercel Deployment Ignore
 .git
 .gemini
 .agents
 *.log
-benchmarks/
-analytics/
-backend/
-feature_store/
-ingestion/
-ml_engine/
-schemas/
-streaming/
-Docs/
-start_server.ps1
