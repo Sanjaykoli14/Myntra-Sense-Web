@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Myntra Sense — Live Telemetry & 60 FPS Monitor Styles
+   ========================================================================== */
+
+.telemetry-drawer-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 150;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-fast);
+}
+
+.telemetry-drawer-toggle:hover {
+  border-color: var(--confidence-cyan);
+  box-shadow: 0 0 16px rgba(0, 199, 255, 0.3);
+}
+
+.fps-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--confidence-high);
+  font-family: monospace;
+  font-weight: 700;
+}
+
+.fps-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--confidence-high);
+  border-radius: var(--radius-full);
+  animation: pulseGlow 1.5s infinite;
+}
+
+/* Slide-out Telemetry Drawer */
+.telemetry-drawer {
+  position: fixed;
+  bottom: 4.5rem;
+  right: 1.5rem;
+  width: 420px;
+  max-height: 480px;
+  background: rgba(13, 15, 20, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  z-index: 150;
+  overflow: hidden;
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition-smooth);
+}
+
+.telemetry-drawer.active {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.telemetry-drawer-header {
+  padding: 0.85rem 1.25rem;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.telemetry-events-list {
+  padding: 0.75rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: 'SF Mono', Consolas, monospace;
+  font-size: 0.72rem;
+}
+
+.telemetry-event-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.event-type-badge {
+  color: var(--confidence-cyan);
+  font-weight: 700;
+}
+
+.event-topic {
+  color: var(--text-muted);
+}

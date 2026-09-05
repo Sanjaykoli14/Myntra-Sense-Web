@@ -1,0 +1,52 @@
+{
+  "experiment_id": "EXP_MYNTRA_SENSE_WISHLIST_CONV_V1",
+  "stages": [
+    {
+      "stage_id": "STAGE_1_CANARY",
+      "name": "5% Canary Rollout",
+      "day_range": "Day 1 - 3",
+      "rollout_percentage": 5.0,
+      "traffic_allocation": { "CONTROL": 95.0, "VARIANT_SENSE": 5.0 },
+      "exit_criteria": {
+        "max_error_rate": 0.0001,
+        "max_latency_p95_ms": 60.0,
+        "min_events_collected": 10000
+      }
+    },
+    {
+      "stage_id": "STAGE_2_INTERMEDIATE",
+      "name": "25% Intermediate Ramp",
+      "day_range": "Day 4 - 7",
+      "rollout_percentage": 25.0,
+      "traffic_allocation": { "CONTROL": 75.0, "VARIANT_SENSE": 25.0 },
+      "exit_criteria": {
+        "positive_conversion_trend": true,
+        "max_return_delta": 0.00,
+        "max_latency_p95_ms": 60.0
+      }
+    },
+    {
+      "stage_id": "STAGE_3_FULL_EXPERIMENT",
+      "name": "50/50 Controlled A/B Experiment",
+      "day_range": "Day 8 - 14",
+      "rollout_percentage": 50.0,
+      "traffic_allocation": { "CONTROL": 50.0, "VARIANT_SENSE": 50.0 },
+      "exit_criteria": {
+        "statistical_significance_p_val": 0.01,
+        "min_conversion_lift": 0.15,
+        "max_return_delta": 0.00
+      }
+    },
+    {
+      "stage_id": "STAGE_4_GENERAL_AVAILABILITY",
+      "name": "100% General Availability (GA)",
+      "day_range": "Day 15+",
+      "rollout_percentage": 100.0,
+      "traffic_allocation": { "CONTROL": 0.0, "VARIANT_SENSE": 100.0 },
+      "exit_criteria": {
+        "sustained_conversion_lift": true,
+        "cluster_health_rps": 50000
+      }
+    }
+  ]
+}

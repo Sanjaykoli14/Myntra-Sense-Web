@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package myntra.sense.telemetry.v1;
+
+import "common_types.proto";
+
+enum WishlistActionType {
+  WISHLIST_ACTION_UNSPECIFIED = 0;
+  WISHLIST_ACTION_ADD = 1;
+  WISHLIST_ACTION_REMOVE = 2;
+  WISHLIST_ACTION_MOVE_TO_BAG = 3;
+  WISHLIST_ACTION_COMPARE_SELECTED = 4;
+}
+
+message WishlistOpEvent {
+  string event_id = 1;
+  ClientContext context = 2;
+  
+  string product_id = 3;
+  string brand_id = 4;
+  string category_id = 5;
+  
+  WishlistActionType action_type = 6;
+  string target_size = 7;
+  double price_at_action = 8;
+  
+  int32 total_wishlist_count_after_op = 9;
+  int64 item_dwell_time_before_action_ms = 10;
+  
+  int64 event_timestamp_ms = 11;
+}

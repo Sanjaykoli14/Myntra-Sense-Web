@@ -1,0 +1,72 @@
+Stitch Design Prompt
+
+Give me prompt for stitch to build Myntra App design for wishlist conversion probel to increase conversion and solution here the problem and solution
+
+### Problem Statement
+
+You are a Product Manager on the Growth Team at the product you have chosen.
+Millions of users browse fashion products, save items they like, and add products to their wishlists. A wishlist represents a particularly interesting signal: the user has expressed explicit interest in an item but has stopped short of purchasing it.
+Over time, users can accumulate dozens—or even hundreds—of wishlisted products, while only a small proportion eventually translate into purchases.
+One of your company’s strategic goals is to:
+**Increase the percentage of users who purchase at least one item from their wishlist within 30 days of adding it.**
+Improving wishlist-to-purchase conversion could increase purchase frequency, improve monetization from existing users, and help the company extract greater value from high-intent demand already present on the platform.
+However, \*\*you are not being given the underlying user problem. Your task is to discover it. And for the solution, the constraint is that you CANNOT offer monetary incentives to the users.\*\* 
+
+### Solution 
+
+# 🧠 Myntra Sense — Personalized Confidence Engine
+
+### Core Idea
+
+**Myntra Sense** identifies Wishlist products the user is most likely to reconsider and provides **personalized confidence signals** to help them decide faster.
+
+### How it works
+
+**1. Re-engage**
+
+> Home Page → **“Myntra Sense — Your Wishlist Picks”**
+
+- Shows **Top 20 personalized products**
+- **10 products from Wishlist (50%)**
+- 10 additional relevant/complementary products (50%)
+- Gives users a reason to **revisit saved products**
+
+↓
+**2. Revisit & Evaluate**
+User taps a wishlisted product.
+Myntra Sense shows:
+
+### Confidence Score: 87/100
+
+**Key confidence signals**
+
+- 🛡️ **Authenticity**
+- ⭐ **Quality**
+- 🔄 **Return Confidence**
+- 📏 **Fit Confidence**
+
+Plus:
+
+- ⭐ Product rating & review count
+- 📸 1–2 relevant customer photos
+- 💬 Top customer review insights
+- 💡 Key strengths & concerns
+
+↓
+**3. Understand Why**
+Myntra Sense explains **why the product is recommended**:
+
+> *“Recommended for you based on your preferences and strong customer feedback.”*
+
+↓
+**4. Decision Support**
+Users can compare the saved product with other shortlisted items and quickly understand **which option gives them higher confidence**.
+↓
+**5. Purchase**
+Once the user is ready, they can directly proceed to **Buy Now / Add to Bag**.
+
+### End-to-End Flow
+
+**Re-engage → Revisit → Confidence Check → Understand → Compare → Decide → Purchase**
+
+> **Myntra Sense helps users revisit the right Wishlist products and gives them the confidence signals they need to make a purchase decision.**

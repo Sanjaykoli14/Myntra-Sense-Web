@@ -1,0 +1,22 @@
+{
+  "type": "record",
+  "name": "WishlistOpEventAvro",
+  "namespace": "com.myntra.sense.telemetry.avro",
+  "doc": "Avro schema for Wishlist Operations ingested into Kafka topic: wishlist_ops",
+  "fields": [
+    { "name": "event_id", "type": "string" },
+    { "name": "user_id", "type": "string" },
+    { "name": "session_id", "type": "string" },
+    { "name": "device_id", "type": "string" },
+    { "name": "platform", "type": "string" },
+    { "name": "product_id", "type": "string" },
+    { "name": "brand_id", "type": "string" },
+    { "name": "category_id", "type": "string" },
+    { "name": "action_type", "type": "string" },
+    { "name": "target_size", "type": ["null", "string"], "default": null },
+    { "name": "price_at_action", "type": "double", "default": 0.0 },
+    { "name": "total_wishlist_count_after_op", "type": "int", "default": 0 },
+    { "name": "item_dwell_time_before_action_ms", "type": "long", "default": 0 },
+    { "name": "event_timestamp_ms", "type": "long" }
+  ]
+}

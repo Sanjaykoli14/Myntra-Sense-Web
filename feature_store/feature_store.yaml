@@ -1,0 +1,19 @@
+project: myntra_sense_features
+registry: data/registry.db
+provider: local
+offline_store:
+  type: file
+  # In production, this points to Snowflake / AWS S3 Parquet tables
+  file_path: data/offline_store/
+
+online_store:
+  type: redis
+  connection_string: "localhost:6379"
+  # Tuned for P99 < 5ms read latency under 20,000+ RPS
+  key_ttl: 604800  # 7 days TTL for user profile features
+  max_connections: 500
+  socket_timeout: 0.050  # 50ms socket timeout
+  retry_on_timeout: true
+
+flags:
+  alpha_features: false

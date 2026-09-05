@@ -1,0 +1,27 @@
+{
+  "type": "record",
+  "name": "PDPViewEventAvro",
+  "namespace": "com.myntra.sense.telemetry.avro",
+  "doc": "Avro schema for PDP View Events ingested into Kafka topic: pdp_views",
+  "fields": [
+    { "name": "event_id", "type": "string" },
+    { "name": "user_id", "type": "string" },
+    { "name": "session_id", "type": "string" },
+    { "name": "device_id", "type": "string" },
+    { "name": "platform", "type": "string" },
+    { "name": "product_id", "type": "string" },
+    { "name": "brand_id", "type": "string" },
+    { "name": "category_id", "type": "string" },
+    { "name": "sub_category", "type": ["null", "string"], "default": null },
+    { "name": "is_wishlisted", "type": "boolean", "default": false },
+    { "name": "selected_size", "type": ["null", "string"], "default": null },
+    { "name": "product_price", "type": "double", "default": 0.0 },
+    { "name": "navigation_source", "type": "string", "default": "SEARCH_RESULTS" },
+    { "name": "dwell_time_ms", "type": "long", "default": 0 },
+    { "name": "images_swiped_count", "type": "int", "default": 0 },
+    { "name": "viewed_size_chart", "type": "boolean", "default": false },
+    { "name": "viewed_sense_confidence_dashboard", "type": "boolean", "default": false },
+    { "name": "confidence_score_displayed", "type": "int", "default": 0 },
+    { "name": "event_timestamp_ms", "type": "long" }
+  ]
+}

@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package myntra.sense.telemetry.v1;
+
+import "common_types.proto";
+
+enum PDPNavigationSource {
+  NAV_SOURCE_UNSPECIFIED = 0;
+  NAV_SOURCE_HOME_SENSE_WIDGET = 1;
+  NAV_SOURCE_WISHLIST_PAGE = 2;
+  NAV_SOURCE_SEARCH_RESULTS = 3;
+  NAV_SOURCE_CATEGORY_PLP = 4;
+  NAV_SOURCE_SIMILAR_RECOMMENDATION = 5;
+  NAV_SOURCE_EXTERNAL_DEEP_LINK = 6;
+}
+
+message PDPViewEvent {
+  string event_id = 1;
+  ClientContext context = 2;
+  
+  string product_id = 3;
+  string brand_id = 4;
+  string category_id = 5;
+  string sub_category = 6;
+  
+  bool is_wishlisted = 7;
+  string selected_size = 8;
+  double product_price = 9;
+  
+  PDPNavigationSource navigation_source = 10;
+  
+  // Dwell and interaction metrics
+  int64 dwell_time_ms = 11;
+  int32 images_swiped_count = 12;
+  bool viewed_size_chart = 13;
+  bool expanded_reviews_section = 14;
+  bool viewed_sense_confidence_dashboard = 15;
+  int32 confidence_score_displayed = 16;
+  
+  int64 event_timestamp_ms = 17;
+}

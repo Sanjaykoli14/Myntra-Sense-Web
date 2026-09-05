@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Myntra Sense — AI-Powered Personalized Confidence Engine across 4 Core E-Commerce Screens." />
+  <title>Myntra Sense — 4-Screen E-Commerce Prototype</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/sense_home_widget.css" />
+  <link rel="stylesheet" href="styles/pdp_confidence.css" />
+  <link rel="stylesheet" href="styles/checkout.css" />
+  <link rel="stylesheet" href="styles/comparison_modal.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ====================================================================
+         TOP NAVIGATION BAR
+         ==================================================================== -->
+    <header class="header-navbar">
+      <div class="nav-left-group">
+        <a href="#" onclick="window.appRouter.navigateTo('HOME')" aria-label="Myntra Sense Home">
+          <img src="assets/myntra_sense_logo.png" alt="Myntra Sense Logo" class="brand-logo-img" />
+        </a>
+
+        <ul class="nav-category-links">
+          <li class="nav-category-item active"><a href="#" onclick="window.appRouter.navigateTo('HOME')">MEN</a></li>
+          <li class="nav-category-item"><a href="#" onclick="window.appRouter.navigateTo('HOME')">WOMEN</a></li>
+          <li class="nav-category-item"><a href="#" onclick="window.appRouter.navigateTo('HOME')">KIDS</a></li>
+          <li class="nav-category-item"><a href="#" onclick="window.appRouter.navigateTo('HOME')">HOME</a></li>
+          <li class="nav-category-item"><a href="#" onclick="window.appRouter.navigateTo('HOME')">BEAUTY</a></li>
+          <li class="nav-category-item"><a href="#" onclick="window.appRouter.navigateTo('HOME')">GENZ</a></li>
+          <li class="nav-category-item" style="position: relative;">
+            <a href="#" onclick="window.appRouter.navigateTo('HOME')">STUDIO</a>
+            <span class="nav-tag-new">NEW</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Real-Time Search Bar -->
+      <div class="nav-search-wrapper">
+        <div class="nav-search-input-box">
+          <span>🔍</span>
+          <input type="text" id="nav-search-input" class="nav-search-input" placeholder="Search for products, brands and more" value="Cotton casual shirts" />
+        </div>
+      </div>
+
+      <!-- User Action Icons -->
+      <div class="nav-user-actions">
+        <button class="nav-action-btn" onclick="alert('Profile: Rahul Sharma (Size M Shopper)')">
+          <span class="nav-action-icon">👤</span>
+          <span>Profile</span>
+        </button>
+
+        <button class="nav-action-btn" onclick="window.appRouter.navigateTo('WISHLIST')" title="Wishlist (38 items)">
+          <span class="nav-action-icon">❤️</span>
+          <span>Wishlist</span>
+          <span class="nav-badge-pill">38</span>
+        </button>
+
+        <button class="nav-action-btn" onclick="window.appRouter.navigateTo('CHECKOUT')" title="Shopping Bag">
+          <span class="nav-action-icon">🛍️</span>
+          <span>Bag</span>
+          <span class="nav-badge-pill" id="nav-bag-count-badge">1</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         4-SCREEN SWITCHER TOP BAR (For quick testing across 4 screens)
+         ==================================================================== -->
+    <div class="screen-switcher-bar">
+      <div class="screen-switcher-pills">
+        <span style="font-weight: 700; color: #ffccd6; margin-right: 0.5rem;">📱 Active Screen:</span>
+        <button class="screen-nav-pill active" data-screen="HOME" onclick="window.appRouter.navigateTo('HOME')">
+          🏠 1. Home Page
+        </button>
+        <button class="screen-nav-pill" data-screen="PDP" onclick="window.appRouter.navigateToPDP('SKU-982341')">
+          👗 2. Product Detail Page (PDP)
+        </button>
+        <button class="screen-nav-pill" data-screen="CHECKOUT" onclick="window.appRouter.navigateTo('CHECKOUT')">
+          🛍️ 3. Checkout / Bag Page
+        </button>
+        <button class="screen-nav-pill" data-screen="WISHLIST" onclick="window.appRouter.navigateTo('WISHLIST')">
+          ❤️ 4. Wishlist & Comparison
+        </button>
+      </div>
+
+      <!-- Persona Dropdown -->
+      <div class="persona-switcher-wrapper">
+        <span style="font-size: 0.78rem; color: #e0e0e0;">Persona:</span>
+        <select id="persona-select-dropdown" class="persona-dropdown" aria-label="Select User Persona">
+          <option value="USR_10001">Rahul (Men's Casuals • Size M)</option>
+          <option value="USR_10002">Priya (Women's Ethnic • Size M)</option>
+          <option value="USR_10003">Vikram (Footwear & Active • UK 8)</option>
+          <option value="USR_COLD">Ananya (New User • Cold Start)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="main-content-wrapper">
+
+    <!-- ====================================================================
+         SCREEN 1: HOME PAGE
+         ==================================================================== -->
+    <section id="screen-home" class="screen-view active-screen">
+      <div class="home-page-container">
+
+        <!-- 1. Top Showcase Brand Carousel (Demo Showcase) -->
+        <div class="showcase-carousel-section">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+            <span style="font-size: 0.85rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted);">
+              Featured Brand Spotlights
+            </span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">(Showcase Carousel)</span>
+          </div>
+          <div class="showcase-carousel-track" id="home-showcase-carousel-track">
+            <!-- Dynamic showcase cards generated via sense_home_widget.js -->
+          </div>
+        </div>
+
+        <!-- 2. Myntra Sense Hero AI Feature Banner -->
+        <div class="sense-hero-banner-container" id="sense-hero-banner">
+          <div class="sense-hero-grid">
+            
+            <!-- Left Info -->
+            <div class="sense-hero-left">
+              <div class="sense-hero-header-row">
+                <img src="assets/myntra_sense_logo.png" alt="Myntra Sense" class="sense-hero-logo" />
+                <span class="badge-ai-pill">✨ AI-POWERED</span>
+              </div>
+              <h2 class="sense-hero-title">Smart picks. Higher confidence.</h2>
+              <p class="sense-hero-desc">AI understands your intent, search & needs to recommend the right products for you.</p>
+
+              <div class="sense-value-pills-grid">
+                <div class="sense-value-pill"><span>🎯</span> <span>20 Smart Picks for You</span></div>
+                <div class="sense-value-pill"><span>❤️</span> <span>50% from Wishlist (10 Items)</span></div>
+                <div class="sense-value-pill"><span>🛡️</span> <span>High Confidence Signals</span></div>
+                <div class="sense-value-pill"><span>📏</span> <span>Better Fit, Better Decisions</span></div>
+              </div>
+
+              <div class="sense-hero-footer-note">
+                <span>✓</span> <span>Verified for Authenticity, Quality & Easy Returns.</span>
+              </div>
+            </div>
+
+            <!-- Center 3D Bag Illustration -->
+            <div class="sense-hero-center">
+              <div class="sense-3d-visual">
+                <div class="pedestal-circle"></div>
+                <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80" alt="Shopping Bag" class="bag-illustration" style="border-radius: 12px; height: 160px; object-fit: cover;" />
+                <span class="floating-chip top-left">❤️ 10 Wishlist Picks</span>
+                <span class="floating-chip bottom-right">★ 89/100 Confidence</span>
+              </div>
+            </div>
+
+            <!-- Right Callout Card -->
+            <div class="sense-hero-right-card">
+              <div class="right-card-heading">Your smart picks, powered by AI</div>
+              <div class="right-card-text">Explore 20 AI curated products (10 from your saved Wishlist + 10 Discovery) with higher confidence signals.</div>
+              <button class="btn-tap-to-view" onclick="document.getElementById('curated-picks-anchor').scrollIntoView({ behavior: 'smooth' })">
+                Tap to View &gt;
+              </button>
+              <div class="right-card-footer-label">Personalized just for you</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 3. Curated Wishlist Picks Carousel -->
+        <div class="curated-picks-section" id="curated-picks-anchor">
+          <div class="section-header-row">
+            <h1 class="section-title">
+              <img src="assets/myntra_sense_logo.png" alt="Myntra Sense" style="height: 26px;" />
+              <span>— Your Wishlist Picks</span>
+            </h1>
+            <span style="font-size: 0.85rem; color: var(--confidence-high); font-weight: 700;">
+              ✓ Curated from your 38 saved items
+            </span>
+          </div>
+
+          <div class="curated-carousel-track" id="home-curated-carousel-track">
+            <!-- Populated via sense_home_widget.js -->
+          </div>
+        </div>
+
+        <!-- 4. Clickable Trending Fashion Products Grid -->
+        <div class="trending-products-section">
+          <div class="section-header-row">
+            <h3 class="section-title">
+              <span>🔥</span> <span>Trending Fashion Picks</span>
+            </h3>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Click any product to view full details & confidence score</span>
+          </div>
+
+          <div class="products-grid-4col" id="home-trending-products-grid">
+            <!-- Populated via sense_home_widget.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SCREEN 2: PRODUCT DETAIL PAGE (PDP)
+         ==================================================================== -->
+    <section id="screen-pdp" class="screen-view">
+      <div class="pdp-page-container" id="pdp-dynamic-content-root">
+        <!-- Rendered dynamically via pdp_confidence.js -->
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SCREEN 3: CHECKOUT / SHOPPING BAG PAGE
+         ==================================================================== -->
+    <section id="screen-checkout" class="screen-view">
+      <div class="checkout-page-container" id="checkout-dynamic-content-root">
+        <!-- Rendered dynamically via checkout_sense.js -->
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SCREEN 4: WISHLIST & COMPARISON SCREEN
+         ==================================================================== -->
+    <section id="screen-wishlist" class="screen-view">
+      <div class="wishlist-page-container" id="wishlist-dynamic-content-root">
+        <!-- Rendered dynamically via comparison_modal.js -->
+      </div>
+    </section>
+
+    <!-- Shortlist Comparison Matrix Modal Overlay -->
+    <div class="comparison-modal-overlay" id="comparison-modal-overlay" role="dialog" aria-modal="true" aria-label="Shortlist Comparison">
+      <div class="comparison-modal-box">
+        <div class="comparison-modal-header">
+          <div>
+            <h2 style="font-size: 1.35rem; font-weight: 800;">AI Side-by-Side Trade-Off Comparison</h2>
+            <p style="font-size: 0.82rem; color: var(--text-secondary);">Multi-dimensional decision support evaluating fabric, fit, and value</p>
+          </div>
+          <button class="nav-action-btn" style="font-size: 1.25rem;" onclick="window.wishlistCompare.closeModal()" aria-label="Close Comparison">✕</button>
+        </div>
+        <div class="comparison-modal-body" id="comparison-table-mount">
+          <!-- Populated dynamically via comparison_modal.js -->
+        </div>
+      </div>
+    </div>
+
+    </main>
+
+    <!-- ====================================================================
+         AUTHENTIC MYNTRA FOOTER
+         ==================================================================== -->
+    <footer class="myntra-footer">
+      <div class="footer-content-grid">
+        <div class="footer-col">
+          <h4>ONLINE SHOPPING</h4>
+          <ul class="footer-links-list">
+            <li><a href="#">Men's Fashion</a></li>
+            <li><a href="#">Women's Fashion</a></li>
+            <li><a href="#">Kids</a></li>
+            <li><a href="#">Home & Living</a></li>
+            <li><a href="#">Beauty</a></li>
+            <li><a href="#">Gift Cards</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>CUSTOMER POLICIES</h4>
+          <ul class="footer-links-list">
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">T&C</a></li>
+            <li><a href="#">Terms Of Use</a></li>
+            <li><a href="#">Track Orders</a></li>
+            <li><a href="#">Returns & Exchanges</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>EXPERIENCE MYNTRA APP</h4>
+          <div style="display: flex; gap: 0.75rem; margin-bottom: 1.25rem;">
+            <button class="btn-myntra-secondary" style="font-size: 0.78rem; padding: 0.5rem 0.85rem;">Google Play</button>
+            <button class="btn-myntra-secondary" style="font-size: 0.78rem; padding: 0.5rem 0.85rem;">App Store</button>
+          </div>
+          <h4>KEEP IN TOUCH</h4>
+          <div style="display: flex; gap: 0.75rem; font-size: 1.1rem; color: var(--text-muted);">
+            <span>📘</span> <span>📸</span> <span>🐦</span> <span>▶️</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-guarantee-box">
+            <span class="guarantee-icon">🛡️</span>
+            <div class="guarantee-text">
+              <strong>100% ORIGINAL guarantee</strong>
+              <p>for all products at myntra.com</p>
+            </div>
+          </div>
+
+          <div class="footer-guarantee-box">
+            <span class="guarantee-icon">🔄</span>
+            <div class="guarantee-text">
+              <strong>Return within 14 days</strong>
+              <p>of receiving your order</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>In case of any concern, Contact Us</span>
+        <span>© 2026 www.myntra.com. All rights reserved. Powered by Myntra Sense AI.</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api_client.js"></script>
+  <script src="js/sense_home_widget.js"></script>
+  <script src="js/pdp_confidence.js"></script>
+  <script src="js/checkout_sense.js"></script>
+  <script src="js/comparison_modal.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

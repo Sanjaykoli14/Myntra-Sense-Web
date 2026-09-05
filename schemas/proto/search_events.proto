@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package myntra.sense.telemetry.v1;
+
+import "common_types.proto";
+
+enum SearchTriggerSource {
+  SEARCH_TRIGGER_UNSPECIFIED = 0;
+  SEARCH_TRIGGER_SEARCH_BAR = 1;
+  SEARCH_TRIGGER_VOICE = 2;
+  SEARCH_TRIGGER_IMAGE_SEARCH = 3;
+  SEARCH_TRIGGER_TRENDING_PILLS = 4;
+  SEARCH_TRIGGER_RECENT_SEARCH_CHIP = 5;
+}
+
+message SearchEvent {
+  string event_id = 1;
+  ClientContext context = 2;
+  
+  string query_text = 3;
+  string normalized_query = 4;
+  SearchTriggerSource trigger_source = 5;
+  
+  // Categorization and filter intent
+  string inferred_gender = 6;
+  string inferred_category_id = 7;
+  repeated string inferred_brands = 8;
+  repeated string active_filter_facets = 9;
+  
+  int32 result_count = 10;
+  int64 latency_ms = 11;
+  
+  // 128-d or 256-d dense semantic embedding of the search query
+  repeated float query_embedding = 12;
+  
+  int64 event_timestamp_ms = 13;
+}

@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "name": "SearchEventAvro",
+  "namespace": "com.myntra.sense.telemetry.avro",
+  "doc": "Avro schema for Search Events ingested into Kafka topic: search_events",
+  "fields": [
+    { "name": "event_id", "type": "string" },
+    { "name": "user_id", "type": "string" },
+    { "name": "session_id", "type": "string" },
+    { "name": "device_id", "type": "string" },
+    { "name": "platform", "type": "string" },
+    { "name": "query_text", "type": "string" },
+    { "name": "normalized_query", "type": "string" },
+    { "name": "trigger_source", "type": "string", "default": "SEARCH_BAR" },
+    { "name": "inferred_gender", "type": ["null", "string"], "default": null },
+    { "name": "inferred_category_id", "type": ["null", "string"], "default": null },
+    { "name": "inferred_brands", "type": { "type": "array", "items": "string" }, "default": [] },
+    { "name": "result_count", "type": "int", "default": 0 },
+    { "name": "latency_ms", "type": "long", "default": 0 },
+    { "name": "query_embedding", "type": { "type": "array", "items": "float" }, "default": [] },
+    { "name": "event_timestamp_ms", "type": "long" }
+  ]
+}

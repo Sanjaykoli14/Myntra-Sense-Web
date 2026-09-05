@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Myntra Sense Schema Registry Configuration",
+  "version": "1.0.0",
+  "compatibility": "FULL_TRANSITIVE",
+  "topics": [
+    {
+      "topic": "myntra.sense.search_events.v1",
+      "schemaType": "PROTOBUF",
+      "protoFile": "schemas/proto/search_events.proto",
+      "avroFile": "schemas/avro/search_event.avsc",
+      "partitionCount": 32,
+      "replicationFactor": 3,
+      "retentionMs": 604800000,
+      "cleanupPolicy": "delete"
+    },
+    {
+      "topic": "myntra.sense.pdp_views.v1",
+      "schemaType": "PROTOBUF",
+      "protoFile": "schemas/proto/pdp_views.proto",
+      "avroFile": "schemas/avro/pdp_view_event.avsc",
+      "partitionCount": 64,
+      "replicationFactor": 3,
+      "retentionMs": 604800000,
+      "cleanupPolicy": "delete"
+    },
+    {
+      "topic": "myntra.sense.wishlist_ops.v1",
+      "schemaType": "PROTOBUF",
+      "protoFile": "schemas/proto/wishlist_ops.proto",
+      "avroFile": "schemas/avro/wishlist_op_event.avsc",
+      "partitionCount": 32,
+      "replicationFactor": 3,
+      "retentionMs": 2592000000,
+      "cleanupPolicy": "compact,delete"
+    },
+    {
+      "topic": "myntra.sense.clickstream_events.v1",
+      "schemaType": "PROTOBUF",
+      "protoFile": "schemas/proto/clickstream_events.proto",
+      "avroFile": "schemas/avro/clickstream_event.avsc",
+      "partitionCount": 64,
+      "replicationFactor": 3,
+      "retentionMs": 259200000,
+      "cleanupPolicy": "delete"
+    },
+    {
+      "topic": "myntra.sense.cache_invalidation_triggers.v1",
+      "schemaType": "JSON",
+      "partitionCount": 16,
+      "replicationFactor": 3,
+      "retentionMs": 86400000,
+      "cleanupPolicy": "delete"
+    }
+  ]
+}

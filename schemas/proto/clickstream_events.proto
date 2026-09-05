@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package myntra.sense.telemetry.v1;
+
+import "common_types.proto";
+
+enum UIElementType {
+  UI_ELEMENT_UNSPECIFIED = 0;
+  UI_ELEMENT_SENSE_HOME_CARD = 1;
+  UI_ELEMENT_SENSE_CAROUSEL_SWIPE = 2;
+  UI_ELEMENT_CONFIDENCE_BADGE_TAP = 3;
+  UI_ELEMENT_SIZE_RECOMMENDER_MODAL = 4;
+  UI_ELEMENT_COMPARISON_MATRIX_ROW = 5;
+  UI_ELEMENT_CUSTOMER_PHOTO_MODAL = 6;
+  UI_ELEMENT_XAI_EXPLANATION_CARD = 7;
+}
+
+enum InteractionType {
+  INTERACTION_UNSPECIFIED = 0;
+  INTERACTION_IMPRESSION = 1;
+  INTERACTION_CLICK = 2;
+  INTERACTION_HOVER = 3;
+  INTERACTION_SWIPE = 4;
+  INTERACTION_EXPAND = 5;
+}
+
+message ClickstreamEvent {
+  string event_id = 1;
+  ClientContext context = 2;
+  
+  string screen_name = 3;
+  UIElementType element_type = 4;
+  InteractionType interaction_type = 5;
+  
+  string associated_product_id = 6;
+  string payload_metadata_json = 7;
+  
+  int32 viewport_position_index = 8;
+  int64 interaction_duration_ms = 9;
+  
+  int64 event_timestamp_ms = 10;
+}
